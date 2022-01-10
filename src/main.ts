@@ -18,7 +18,7 @@ async function run() {
     core.addPath(path.join(os.homedir(), '.dotnet', 'tools'));
 
     // build arguments list
-    let args = [' '];
+    let args = [''];
 
     if (Inputs.workingDirectory) {
       args.push('--working-directory', Inputs.workingDirectory);

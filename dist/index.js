@@ -39,7 +39,7 @@ async function run() {
             throw new Error("failed to install nanodu.");
         }
         core.addPath(path.join(os.homedir(), '.dotnet', 'tools'));
-        let args = [' '];
+        let args = [''];
         if (settings_1.Inputs.workingDirectory) {
             args.push('--working-directory', settings_1.Inputs.workingDirectory);
         }
