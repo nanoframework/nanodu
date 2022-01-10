@@ -8,7 +8,7 @@ inputs:
   workingDirectory:
     required: false
     description: 'Repo root|Working directory. Use when targeting Solution file(s) other than the repository root.'
-    default: ''
+    default: '${{ github.workspace }}'
   stablePackages:
     required: false
     description: 'Use stable NuGet package versions.'
