@@ -6,32 +6,12 @@ export class Inputs {
         return result === '' || result === null ? undefined : result;
     }
 
-    static get stablePackages(): boolean {
-        const result = core.getInput('stablePackages');
-
-        if(result == null || result == undefined)
-        {
-            // default to false
-            return false;
-        }
-        else
-        {
-            return core.getInput('previewPackages') === 'true';
-        }
+    static get stablePackages(): boolean | undefined {
+        return core.getInput('previewPackages') === 'true';
     }
 
-    static get previewPackages(): boolean {
-        const result = core.getInput('previewPackages');
-
-        if(result == null || result == undefined)
-        {
-            // default to true
-            return true;
-        }
-        else
-        {
-            return core.getInput('previewPackages') === 'true';
-        }
+    static get previewPackages(): boolean | undefined {
+        return core.getInput('previewPackages') === 'true';
     }
 
     static get solutionsToCheck(): string | undefined {

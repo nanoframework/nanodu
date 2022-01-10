@@ -101,22 +101,10 @@ class Inputs {
         return result === '' || result === null ? undefined : result;
     }
     static get stablePackages() {
-        const result = core.getInput('stablePackages');
-        if (result == null || result == undefined) {
-            return false;
-        }
-        else {
-            return core.getInput('previewPackages') === 'true';
-        }
+        return core.getInput('previewPackages') === 'true';
     }
     static get previewPackages() {
-        const result = core.getInput('previewPackages');
-        if (result == null || result == undefined) {
-            return true;
-        }
-        else {
-            return core.getInput('previewPackages') === 'true';
-        }
+        return core.getInput('previewPackages') === 'true';
     }
     static get solutionsToCheck() {
         const result = core.getInput('solutionsToCheck');
