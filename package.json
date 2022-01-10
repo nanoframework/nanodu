@@ -1,43 +1,38 @@
 {
-  "name": "typescript-action",
+  "name": "nanodu-action",
   "version": "0.0.0",
   "private": true,
-  "description": "TypeScript template action",
+  "description": "GitHub Action for .NET nanoFramework dependencies updater",
   "main": "lib/main.js",
   "scripts": {
-    "build": "tsc",
-    "format": "prettier --write '**/*.ts'",
-    "format-check": "prettier --check '**/*.ts'",
-    "lint": "eslint src/**/*.ts",
-    "package": "ncc build --source-map --license licenses.txt",
-    "test": "jest",
-    "all": "npm run build && npm run format && npm run lint && npm run package && npm test"
+    "build": "tsc && ncc build lib/main.js",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/actions/typescript-action.git"
+    "url": "git+https://github.com/nanoframework/nanodu.git"
   },
   "keywords": [
     "actions",
-    "node",
-    "setup"
+    "nanoframework",
+    "tools"
   ],
-  "author": "",
+  "author": ".NET nanoFramework Contributors",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.6.0"
+    "@actions/core": "^1.6.0",
+    "@actions/exec": "^1.0.4",
+    "@actions/github": "^4.0.0",
+    "os": "^0.1.1",
+    "semver": "^7.3.2"
   },
   "devDependencies": {
-    "@types/node": "^17.0.8",
-    "@typescript-eslint/parser": "^5.9.0",
-    "@vercel/ncc": "^0.31.1",
-    "eslint": "^7.32.0",
-    "eslint-plugin-github": "^4.3.2",
-    "eslint-plugin-jest": "^25.3.4",
-    "jest": "^27.4.7",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^16.0.0",
+    "@vercel/ncc": "^0.33.1",
+    "jest": "^26.6.3",
     "js-yaml": "^4.1.0",
-    "prettier": "2.5.1",
-    "ts-jest": "^27.1.2",
+    "ts-jest": "^26.4.4",
     "typescript": "^4.5.4"
   }
 }

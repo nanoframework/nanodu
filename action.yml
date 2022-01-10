@@ -1,11 +1,30 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: '.NET nanoFramework dependencies updater'
+description: 'Updates .NET nanoFramework NuGet packages and nuspec files on .NET nanoFramework solutions'
+author: '.NET nanoFramework Contributors'
+branding:
+  icon: git-merge
+  color: purple
 inputs:
-  milliseconds: # change this
-    required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+  workingDirectory:
+    required: false
+    description: 'Repo root|Working directory. Use when targeting Solution file(s) other than the repository root.'
+    default: ''
+  stablePackages:
+    required: false
+    description: 'Use stable NuGet package versions.'
+    default: 'false'
+  previewPackages:
+    required: false
+    description: 'Use preview NuGet package versions.'
+    default: 'true'
+  solutionsToCheck:
+    required: false
+    description: 'List of Solution(s) to update in the `workingDirectory` directory.'
+    default: ''
+  reposToUpdate:
+    required: false
+    description: 'List of repository(es) to update.'
+    default: ''
 runs:
   using: 'node12'
   main: 'dist/index.js'

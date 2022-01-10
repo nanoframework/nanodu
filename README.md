@@ -1,105 +1,76 @@
-<p align="center">
-  <a href="https://github.com/actions/typescript-action/actions"><img alt="typescript-action status" src="https://github.com/actions/typescript-action/workflows/build-test/badge.svg"></a>
-</p>
+[![GitHub Actions status](https://github.com/dotnet/nbgv/workflows/CI/PR/badge.svg)](https://github.com/dotnet/nbgv/actions) [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) [![#yourfirstpr](https://img.shields.io/badge/first--timers--only-friendly-blue.svg)](https://github.com/nanoframework/Home/blob/main/CONTRIBUTING.md) [![Discord](https://img.shields.io/discord/478725473862549535.svg?logo=discord&logoColor=white&label=Discord&color=7289DA)](https://discord.gg/gCyBu8T)
 
-# Create a JavaScript Action using TypeScript
+![nanoFramework logo](https://raw.githubusercontent.com/nanoframework/Home/main/resources/logo/nanoFramework-repo-logo.png)
 
-Use this template to bootstrap the creation of a TypeScript action.:rocket:
+-----
 
-This template includes compilation support, tests, a validation workflow, publishing, and versioning guidance.  
+## GitHub Action for .NET **nanoFramework** dependencies updater
 
-If you are new, there's also a simpler introduction.  See the [Hello World JavaScript Action](https://github.com/actions/hello-world-javascript-action)
+This action installs the nanodu dotnet tool and udpates the NuGet packages and respective nuspec files in any .NET nanoFramework solutions living in a GitHub repository.
 
-## Create an action from this template
+### Inputs
 
-Click the `Use this Template` and provide the new repo details for your action
 
-## Code in Main
+|Name|Default|Description
+|--|--|--|
+`workingDirectory`||Working directory. Use when targeting Solution file(s) other than the repository root.
+`stablePackages`|false|Use stable NuGet package versions.
+`previewPackages`|true|Use preview NuGet package versions.
+`solutionsToCheck`||List of Solution(s) to update in the `workingDirectory` directory.
+`reposToUpdate`||List of repository(es) to update.
 
-> First, you'll need to have a reasonably modern version of `node` handy. This won't work with versions older than 9, for instance.
+## Example usage
 
-Install the dependencies  
-```bash
-$ npm install
-```
-
-Build the typescript and package it for distribution
-```bash
-$ npm run build && npm run package
-```
-
-Run the tests :heavy_check_mark:  
-```bash
-$ npm test
-
- PASS  ./index.test.js
-  ✓ throws invalid number (3ms)
-  ✓ wait 500 ms (504ms)
-  ✓ test runs (95ms)
-
-...
-```
-
-## Change action.yml
-
-The action.yml defines the inputs and output for your action.
-
-Update the action.yml with your name, description, inputs and outputs for your action.
-
-See the [documentation](https://help.github.com/en/articles/metadata-syntax-for-github-actions)
-
-## Change the Code
-
-Most toolkit and CI/CD operations involve async operations so the action is run in an async function.
-
-```javascript
-import * as core from '@actions/core';
-...
-
-async function run() {
-  try { 
-      ...
-  } 
-  catch (error) {
-    core.setFailed(error.message);
-  }
-}
-
-run()
-```
-
-See the [toolkit documentation](https://github.com/actions/toolkit/blob/master/README.md#packages) for the various packages.
-
-## Publish to a distribution branch
-
-Actions are run from GitHub repos so we will checkin the packed dist folder. 
-
-Then run [ncc](https://github.com/zeit/ncc) and push the results:
-```bash
-$ npm run package
-$ git add dist
-$ git commit -a -m "prod dependencies"
-$ git push origin releases/v1
-```
-
-Note: We recommend using the `--license` option for ncc, which will create a license file for all of the production node modules used in your project.
-
-Your action is now published! :rocket: 
-
-See the [versioning documentation](https://github.com/actions/toolkit/blob/master/docs/action-versioning.md)
-
-## Validate
-
-You can now validate the action by referencing `./` in a workflow in your repo (see [test.yml](.github/workflows/test.yml))
+Update dependencies for library in repository this is being runned using preview NuGet packages.
 
 ```yaml
-uses: ./
-with:
-  milliseconds: 1000
+- uses: nanoframework/nanodu@v1
+  with:
+    previewPackages: true
 ```
 
-See the [actions tab](https://github.com/actions/typescript-action/actions) for runs of this action! :rocket:
+Update dependencies of `amqp-nanoFramework.sln` solution using stable NuGet packages.
 
-## Usage:
+```yaml
+- uses: nanoframework/nanodu@v1
+  with:
+    stablePackages: true
+    solutionsToCheck: 'amqp-nanoFramework.sln'
+```
 
-After testing you can [create a v1 tag](https://github.com/actions/toolkit/blob/master/docs/action-versioning.md) to reference the stable and latest V1 action
+Update dependencies on several repositories using preview NuGet packages.
+
+```yaml
+- uses: nanoframework/nanodu@v1
+  with:
+    stablePackages: true
+    reposToUpdate: >
+      System.Net.Http
+      System.Net.WebSockets
+      System.Device.WiFi
+      nanoFramework.m2mqtt
+      nanoFramework.Azure.Devices
+```
+
+## Feedback and documentation
+
+For documentation, providing feedback, issues and finding out how to contribute please refer to the [Home repo](https://github.com/nanoframework/Home).
+
+Join our Discord community [here](https://discord.gg/gCyBu8T).
+
+## Credits
+
+The list of contributors to this project can be found at [CONTRIBUTORS](https://github.com/nanoframework/Home/blob/main/CONTRIBUTORS.md).
+
+## License
+
+The **nanoFramework** Class Libraries are licensed under the [MIT license](LICENSE.md).
+
+## Code of Conduct
+
+This project has adopted the code of conduct defined by the Contributor Covenant to clarify expected behaviour in our community.
+For more information see the [.NET Foundation Code of Conduct](https://dotnetfoundation.org/code-of-conduct).
+
+### .NET Foundation
+
+This project is supported by the [.NET Foundation](https://dotnetfoundation.org).
