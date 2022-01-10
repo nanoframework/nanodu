@@ -100,10 +100,22 @@ class Inputs {
         return result === '' || result === null ? undefined : result;
     }
     static get stablePackages() {
-        return core.getInput('stablePackages') === 'false';
+        const result = core.getInput('stablePackages');
+        if (result == null || result == undefined) {
+            return false;
+        }
+        else {
+            return core.getInput('previewPackages') === 'true';
+        }
     }
     static get previewPackages() {
-        return core.getInput('previewPackages') === 'true';
+        const result = core.getInput('previewPackages');
+        if (result == null || result == undefined) {
+            return true;
+        }
+        else {
+            return core.getInput('previewPackages') === 'true';
+        }
     }
     static get solutionsToCheck() {
         const result = core.getInput('solutionsToCheck');

@@ -7,11 +7,31 @@ export class Inputs {
     }
 
     static get stablePackages(): boolean {
-        return core.getInput('stablePackages') === 'false';
+        const result = core.getInput('stablePackages');
+
+        if(result == null || result == undefined)
+        {
+            // default to false
+            return false;
+        }
+        else
+        {
+            return core.getInput('previewPackages') === 'true';
+        }
     }
 
     static get previewPackages(): boolean {
-        return core.getInput('previewPackages') === 'true';
+        const result = core.getInput('previewPackages');
+
+        if(result == null || result == undefined)
+        {
+            // default to true
+            return true;
+        }
+        else
+        {
+            return core.getInput('previewPackages') === 'true';
+        }
     }
 
     static get solutionsToCheck(): string | undefined {
