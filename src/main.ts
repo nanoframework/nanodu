@@ -6,6 +6,10 @@ import { Inputs } from './settings';
 
 async function run() {
   try {
+
+    // skip first experience prompt
+    process.env["DOTNET_NOLOGO"] = 'true';
+
     // install nanodu
     let installArgs = ['tool', 'install', '-g', 'nanodu', '--add-source', 'https://pkgs.dev.azure.com/nanoframework/feed/_packaging/sandbox/nuget/v3/index.json'];
 
@@ -18,7 +22,7 @@ async function run() {
     core.addPath(path.join(os.homedir(), '.dotnet', 'tools'));
 
     // build arguments list
-    let args = [''];
+    let args = new Array<string>();
 
     if (Inputs.workingDirectory) {
       args.push('--working-directory', Inputs.workingDirectory);

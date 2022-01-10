@@ -33,13 +33,14 @@ const path = __importStar(__nccwpck_require__(17));
 const settings_1 = __nccwpck_require__(286);
 async function run() {
     try {
+        process.env["DOTNET_NOLOGO"] = 'true';
         let installArgs = ['tool', 'install', '-g', 'nanodu', '--add-source', 'https://pkgs.dev.azure.com/nanoframework/feed/_packaging/sandbox/nuget/v3/index.json'];
         let exitCode = await (0, exec_1.exec)('dotnet', installArgs, { ignoreReturnCode: true });
         if (exitCode > 1) {
             throw new Error("failed to install nanodu.");
         }
         core.addPath(path.join(os.homedir(), '.dotnet', 'tools'));
-        let args = [''];
+        let args = new Array();
         if (settings_1.Inputs.workingDirectory) {
             args.push('--working-directory', settings_1.Inputs.workingDirectory);
         }
