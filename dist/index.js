@@ -101,7 +101,7 @@ class Inputs {
         return result === '' || result === null ? undefined : result;
     }
     static get stablePackages() {
-        return core.getInput('previewPackages') === 'true';
+        return core.getInput('stablePackages') === 'true';
     }
     static get previewPackages() {
         return core.getInput('previewPackages') === 'true';

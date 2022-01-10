@@ -6,11 +6,11 @@ export class Inputs {
         return result === '' || result === null ? undefined : result;
     }
 
-    static get stablePackages(): boolean | undefined {
-        return core.getInput('previewPackages') === 'true';
+    static get stablePackages(): boolean {
+        return core.getInput('stablePackages') === 'true';
     }
 
-    static get previewPackages(): boolean | undefined {
+    static get previewPackages(): boolean {
         return core.getInput('previewPackages') === 'true';
     }
 
