@@ -18,6 +18,14 @@ async function run() {
       throw new Error("failed to install nanodu.");
     }
 
+    // install nbgv
+    installArgs = ['tool', 'install', '-g', 'nbgv'];
+
+    exitCode = await exec('dotnet', installArgs, { ignoreReturnCode: true });
+    if (exitCode > 1) {
+      throw new Error("failed to install nbgv.");
+    }
+
     // add .dotnet/tools to the path
     core.addPath(path.join(os.homedir(), '.dotnet', 'tools'));
 
@@ -42,6 +50,10 @@ async function run() {
 
     if (Inputs.reposToUpdate) {
       args.push('--repos-to-update', Inputs.reposToUpdate);
+    }
+
+    if (Inputs.exclusionList) {
+      args.push('--exclusion-list', Inputs.exclusionList);
     }
 
     await exec('nanodu', args);

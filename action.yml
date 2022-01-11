@@ -25,6 +25,10 @@ inputs:
     required: false
     description: 'List of repository(es) to update.'
     default: ''
+  exclusionList:
+    required: false
+    description: 'List of solution names to exclude from the update. Comma separated, name only.'
+    default: ''
 runs:
   using: 'node12'
   main: 'dist/index.js'

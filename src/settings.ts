@@ -24,4 +24,8 @@ export class Inputs {
         return result === '' || result === null ? undefined : result;
     }
 
+    static get exclusionList(): string | undefined {
+        const result = core.getInput('exclusionList');
+        return result === '' || result === null ? undefined : result;
+    }
 }

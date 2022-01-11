@@ -18,10 +18,11 @@ This action installs the nanodu dotnet tool and udpates the NuGet packages and r
 `previewPackages`|true|Use preview NuGet package versions.
 `solutionsToCheck`||List of Solution(s) to update in the `workingDirectory` directory.
 `reposToUpdate`||List of repository(es) to update.
+`exclusionList`||List of solution(s) to exclude from update. Comma separated list.
 
 ## Example usage
 
-Update dependencies for library in repository this is being runned using preview NuGet packages.
+Update dependencies of library in repository where this action is being executed using preview NuGet packages.
 
 ```yaml
 - uses: nanoframework/nanodu@v1
@@ -50,6 +51,16 @@ Update dependencies on several repositories using preview NuGet packages.
       System.Device.WiFi
       nanoFramework.m2mqtt
       nanoFramework.Azure.Devices
+```
+
+Update dependencies on all solutions, except `MyLibrary` and `MyOtherLibrary`, using preview NuGet packages.
+
+```yaml
+- uses: nanoframework/nanodu@v1
+  with:
+    stablePackages: true
+    solutionsToCheck: 'amqp-nanoFramework.sln'
+    exclusionList: 'MyLibrary,MyOtherLibrary'
 ```
 
 ## Feedback and documentation
