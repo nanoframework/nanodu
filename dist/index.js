@@ -39,11 +39,6 @@ async function run() {
         if (exitCode > 1) {
             throw new Error("failed to install nanodu.");
         }
-        installArgs = ['tool', 'install', '-g', 'nbgv'];
-        exitCode = await (0, exec_1.exec)('dotnet', installArgs, { ignoreReturnCode: true });
-        if (exitCode > 1) {
-            throw new Error("failed to install nbgv.");
-        }
         core.addPath(path.join(os.homedir(), '.dotnet', 'tools'));
         let args = new Array();
         if (settings_1.Inputs.workingDirectory) {
