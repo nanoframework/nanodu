@@ -29,6 +29,10 @@ inputs:
     required: false
     description: 'List of solution names to exclude from the update. Comma separated, name only.'
     default: ''
+  branchToPr:
+    required: false
+    description: 'Branch name to submit PR with update. Default is `develop`.'
+    default: 'develop'
 runs:
   using: 'node12'
   main: 'dist/index.js'
