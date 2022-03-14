@@ -6,6 +6,11 @@ export class Inputs {
         return result === '' || result === null ? undefined : result;
     }
 
+    static get branchToPr(): string | undefined {
+        const result = core.getInput('branchToPr');
+        return result === '' || result === null ? undefined : result;
+    }
+
     static get stablePackages(): boolean {
         return core.getInput('stablePackages') === 'true';
     }

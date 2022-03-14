@@ -48,6 +48,9 @@ async function run() {
         if (settings_1.Inputs.workingDirectory) {
             args.push('--working-directory', settings_1.Inputs.workingDirectory);
         }
+        if (settings_1.Inputs.branchToPr) {
+            args.push('--branch-to-pr', settings_1.Inputs.branchToPr);
+        }
         if (settings_1.Inputs.stablePackages) {
             args.push('--stable-packages');
         }
@@ -109,6 +112,10 @@ const core = __importStar(__nccwpck_require__(186));
 class Inputs {
     static get workingDirectory() {
         const result = core.getInput('workingDirectory');
+        return result === '' || result === null ? undefined : result;
+    }
+    static get branchToPr() {
+        const result = core.getInput('branchToPr');
         return result === '' || result === null ? undefined : result;
     }
     static get stablePackages() {

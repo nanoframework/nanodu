@@ -28,6 +28,10 @@ async function run() {
       args.push('--working-directory', Inputs.workingDirectory);
     }
 
+    if (Inputs.branchToPr) {
+      args.push('--branch-to-pr', Inputs.branchToPr);
+    }
+
     if (Inputs.stablePackages) {
       args.push('--stable-packages');
     }
