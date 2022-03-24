@@ -27,6 +27,7 @@ Update dependencies of library in repository where this action is being executed
 ```yaml
 - uses: nanoframework/nanodu@v1
   with:
+    repo-token: ${{ secrets.GITHUB_TOKEN }}
     previewPackages: true
 ```
 
@@ -35,6 +36,7 @@ Update dependencies of `amqp-nanoFramework.sln` solution using stable NuGet pack
 ```yaml
 - uses: nanoframework/nanodu@v1
   with:
+    repo-token: ${{ secrets.GITHUB_TOKEN }}
     stablePackages: true
     solutionsToCheck: 'amqp-nanoFramework.sln'
 ```
@@ -44,6 +46,7 @@ Update dependencies on several repositories using preview NuGet packages.
 ```yaml
 - uses: nanoframework/nanodu@v1
   with:
+    repo-token: ${{ secrets.GITHUB_TOKEN }}
     stablePackages: true
     reposToUpdate: >
       System.Net.Http
