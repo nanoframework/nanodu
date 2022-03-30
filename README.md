@@ -26,6 +26,8 @@ Update dependencies of library in repository where this action is being executed
 
 ```yaml
 - uses: nanoframework/nanodu@v1
+  env:
+    GITHUB_TOKEN: ${{ github.token }}
   with:
     previewPackages: true
 ```
@@ -34,6 +36,8 @@ Update dependencies of `amqp-nanoFramework.sln` solution using stable NuGet pack
 
 ```yaml
 - uses: nanoframework/nanodu@v1
+  env:
+    GITHUB_TOKEN: ${{ github.token }}
   with:
     stablePackages: true
     solutionsToCheck: 'amqp-nanoFramework.sln'
@@ -43,6 +47,8 @@ Update dependencies on several repositories using stable NuGet packages.
 
 ```yaml
 - uses: nanoframework/nanodu@v1
+  env:
+    GITHUB_TOKEN: ${{ github.token }}
   with:
     stablePackages: true
     reposToUpdate: >
@@ -57,11 +63,16 @@ Update dependencies on all solutions, except `MyLibrary` and `MyOtherLibrary`, u
 
 ```yaml
 - uses: nanoframework/nanodu@v1
+  env:
+    GITHUB_TOKEN: ${{ github.token }}
   with:
     previewPackages: true
     solutionsToCheck: 'amqp-nanoFramework.sln'
     exclusionList: 'MyLibrary,MyOtherLibrary'
 ```
+
+>Note: in order to run properly this action requires setting up the GitHub token. There are numerous ways of doing this.
+On the examples above it's being set on the action itself. If that's done elsewhere before the action runs, there is no need to do it again.
 
 ## Feedback and documentation
 
