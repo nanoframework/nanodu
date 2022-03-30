@@ -12,11 +12,11 @@ inputs:
   stablePackages:
     required: false
     description: 'Use stable NuGet package versions.'
-    default: 'false'
+    default: 'true'
   previewPackages:
     required: false
     description: 'Use preview NuGet package versions.'
-    default: 'true'
+    default: 'false'
   solutionsToCheck:
     required: false
     description: 'List of Solution(s) to update in the `workingDirectory` directory.'

@@ -14,8 +14,8 @@ This action installs the nanodu dotnet tool and udpates the NuGet packages and r
 |--|--|--|
 `workingDirectory`|Repository workspace|Working directory. Use when targeting Solution file(s) other than the repository root.
 `branchToPr`|Name of branch to which submit the PR with the updates. Default is _develop_.
-`stablePackages`|false|Use stable NuGet package versions.
-`previewPackages`|true|Use preview NuGet package versions.
+`stablePackages`|true|Use stable NuGet package versions.
+`previewPackages`|false|Use preview NuGet package versions.
 `solutionsToCheck`||List of Solution(s) to update in the `workingDirectory` directory.
 `reposToUpdate`||List of repository(es) to update.
 `exclusionList`||List of solution(s) to exclude from update. Comma separated list.
@@ -39,7 +39,7 @@ Update dependencies of `amqp-nanoFramework.sln` solution using stable NuGet pack
     solutionsToCheck: 'amqp-nanoFramework.sln'
 ```
 
-Update dependencies on several repositories using preview NuGet packages.
+Update dependencies on several repositories using stable NuGet packages.
 
 ```yaml
 - uses: nanoframework/nanodu@v1
@@ -58,7 +58,7 @@ Update dependencies on all solutions, except `MyLibrary` and `MyOtherLibrary`, u
 ```yaml
 - uses: nanoframework/nanodu@v1
   with:
-    stablePackages: true
+    previewPackages: true
     solutionsToCheck: 'amqp-nanoFramework.sln'
     exclusionList: 'MyLibrary,MyOtherLibrary'
 ```
