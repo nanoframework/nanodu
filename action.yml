@@ -31,8 +31,8 @@ inputs:
     default: ''
   branchToPr:
     required: false
-    description: 'Branch name to submit PR with update. Default is `develop`.'
-    default: 'develop'
+    description: 'Branch name to submit PR with update. Default is `main`.'
+    default: 'main'
 runs:
   using: 'node12'
   main: 'dist/index.js'

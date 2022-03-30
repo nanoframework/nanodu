@@ -13,7 +13,7 @@ This action installs the nanodu dotnet tool and udpates the NuGet packages and r
 |Name|Default|Description
 |--|--|--|
 `workingDirectory`|Repository workspace|Working directory. Use when targeting Solution file(s) other than the repository root.
-`branchToPr`|Name of branch to which submit the PR with the updates. Default is _develop_.
+`branchToPr`|Name of branch to which submit the PR with the updates. Default is _main_.
 `stablePackages`|true|Use stable NuGet package versions.
 `previewPackages`|false|Use preview NuGet package versions.
 `solutionsToCheck`||List of Solution(s) to update in the `workingDirectory` directory.
