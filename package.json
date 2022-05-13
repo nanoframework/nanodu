@@ -20,7 +20,7 @@
   "author": ".NET nanoFramework Contributors",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.6.0",
+    "@actions/core": "^1.8.1",
     "@actions/exec": "^1.1.1",
     "@actions/github": "^5.0.2",
     "os": "^0.1.1",
