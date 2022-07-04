@@ -10,15 +10,15 @@ This action installs the nanodu dotnet tool and udpates the NuGet packages and r
 
 ### Inputs
 
-|Name|Default|Description
-|--|--|--|
-`workingDirectory`|Repository workspace|Working directory. Use when targeting Solution file(s) other than the repository root.
-`branchToPr`|Name of branch to which submit the PR with the updates. Default is _main_.
-`stablePackages`|true|Use stable NuGet package versions.
-`previewPackages`|false|Use preview NuGet package versions.
-`solutionsToCheck`||List of Solution(s) to update in the `workingDirectory` directory.
-`reposToUpdate`||List of repository(es) to update.
-`exclusionList`||List of solution(s) to exclude from update. Comma separated list.
+|Name|Default|Options|Description
+|--|--|--|--|
+`workingDirectory`|_root_ Repository workspace path| _optional_ folder path |Use when targeting Solution file(s) a repository root subfolder.
+`branchToPr`| current branch| _main_ |Name of branch to which submit the PR with the updates. 
+`stablePackages`|`true`|`true`/`false`|Use _true_ for `stable` NuGet package versions.
+`previewPackages`|`false`|`true`/`false`|Use _true_ for `preview` NuGet package versions.
+`solutionsToCheck`|All|_optional_ string path(s)|List of Solution(s) to update in the current `workingDirectory`.
+`reposToUpdate`|None|_optional_ repository names|List of (dependent upstream) repository(es) to update. This option is generally (only) used for the 
+`exclusionList`|None|_optional_ solution list|List of solution(s) to exclude from update. Comma separated list.
 
 ## Example usage
 
