@@ -19,6 +19,9 @@ This action installs the nanodu dotnet tool and udpates the NuGet packages and r
 `solutionsToCheck`||List of Solution(s) to update in the `workingDirectory` directory.
 `reposToUpdate`||List of repository(es) to update.
 `exclusionList`||List of solution(s) to exclude from update. Comma separated list.
+`gitHubUser`||Git hub user for creating PR.
+`gitHubEmail`||Git hub user email for creating PR.
+`repoOwner`||Repository owner on git hub. github.com/**[repoOwner]**/repositoryName
 
 ## Example usage
 

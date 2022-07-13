@@ -66,6 +66,15 @@ async function run() {
         if (settings_1.Inputs.exclusionList) {
             args.push('--exclusion-list', settings_1.Inputs.exclusionList);
         }
+        if (settings_1.Inputs.gitHubUser) {
+            args.push('--git-hub-user', settings_1.Inputs.gitHubUser);
+        }
+        if (settings_1.Inputs.gitHubEmail) {
+            args.push('--git-hub-email', settings_1.Inputs.gitHubEmail);
+        }
+        if (settings_1.Inputs.repoOwner) {
+            args.push('--repo-owner', settings_1.Inputs.repoOwner);
+        }
         await (0, exec_1.exec)('nanodu', args);
     }
     catch (error) {
@@ -134,6 +143,18 @@ class Inputs {
     }
     static get exclusionList() {
         const result = core.getInput('exclusionList');
+        return result === '' || result === null ? undefined : result;
+    }
+    static get gitHubUser() {
+        const result = core.getInput('gitHubUser');
+        return result === '' || result === null ? undefined : result;
+    }
+    static get gitHubEmail() {
+        const result = core.getInput('gitHubEmail');
+        return result === '' || result === null ? undefined : result;
+    }
+    static get repoOwner() {
+        const result = core.getInput('repoOwner');
         return result === '' || result === null ? undefined : result;
     }
 }
