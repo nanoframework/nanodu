@@ -64,6 +64,10 @@ async function run() {
       args.push('--repo-owner', Inputs.repoOwner);
     }
 
+    if (Inputs.gitHubAuth) {
+      args.push('--git-hub-auth', Inputs.gitHubAuth);
+    }
+
     await exec('nanodu', args);
 
   } catch (error) {

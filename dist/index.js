@@ -75,6 +75,9 @@ async function run() {
         if (settings_1.Inputs.repoOwner) {
             args.push('--repo-owner', settings_1.Inputs.repoOwner);
         }
+        if (settings_1.Inputs.gitHubAuth) {
+            args.push('--git-hub-auth', settings_1.Inputs.gitHubAuth);
+        }
         await (0, exec_1.exec)('nanodu', args);
     }
     catch (error) {
@@ -155,6 +158,10 @@ class Inputs {
     }
     static get repoOwner() {
         const result = core.getInput('repoOwner');
+        return result === '' || result === null ? undefined : result;
+    }
+    static get gitHubAuth() {
+        const result = core.getInput('gitHubAuth');
         return result === '' || result === null ? undefined : result;
     }
 }

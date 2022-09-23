@@ -48,4 +48,9 @@ export class Inputs {
         const result = core.getInput('repoOwner');
         return result === '' || result === null ? undefined : result;
     }
+
+    static get gitHubAuth(): string | undefined {
+        const result = core.getInput('gitHubAuth');
+        return result === '' || result === null ? undefined : result;
+    }
 }

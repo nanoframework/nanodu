@@ -21,6 +21,7 @@ This action installs the nanodu dotnet tool and udpates the NuGet packages and r
 `exclusionList`||List of solution(s) to exclude from update. Comma separated list.
 `gitHubUser`||Git hub user for creating PR.
 `gitHubEmail`||Git hub user email for creating PR.
+`gitHubAuth`||GitHub Personal Access Token for creating PR.
 `repoOwner`||Repository owner on git hub. github.com/**[repoOwner]**/repositoryName
 
 ## Example usage
@@ -74,8 +75,13 @@ Update dependencies on all solutions, except `MyLibrary` and `MyOtherLibrary`, u
     exclusionList: 'MyLibrary,MyOtherLibrary'
 ```
 
->Note: in order to run properly this action requires setting up the GitHub token. There are numerous ways of doing this.
+## Authentication
+
+In order to run properly this action requires authentication. There are two ways to accomplish this:
+
+1. Setting up the GitHub token as an environment variable. There are numerous ways of doing this.
 On the examples above it's being set on the action itself. If that's done elsewhere before the action runs, there is no need to do it again.
+1. Passing a Personal Access Token in the `gitHubAuth` parameter. This is required if there are GitHub actions or workflows that run as consequence of that PR being created. This is because of a GitHub security feature that prevents recurring runs when using the repository default token. For more details please read the documentation [here](https://docs.github.com/en/actions/using-workflows/triggering-a-workflow#triggering-a-workflow-from-a-workflow).
 
 ## Feedback and documentation
 
