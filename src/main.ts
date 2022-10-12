@@ -52,6 +52,22 @@ async function run() {
       args.push('--exclusion-list', Inputs.exclusionList);
     }
 
+    if (Inputs.gitHubUser) {
+      args.push('--git-hub-user', Inputs.gitHubUser);
+    }
+
+    if (Inputs.gitHubEmail) {
+      args.push('--git-hub-email', Inputs.gitHubEmail);
+    }
+
+    if (Inputs.repoOwner) {
+      args.push('--repo-owner', Inputs.repoOwner);
+    }
+
+    if (Inputs.gitHubAuth) {
+      args.push('--git-hub-auth', Inputs.gitHubAuth);
+    }
+
     await exec('nanodu', args);
 
   } catch (error) {

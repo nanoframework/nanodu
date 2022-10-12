@@ -33,6 +33,22 @@ inputs:
     required: false
     description: 'Branch name to submit PR with update. Default is `main`.'
     default: 'main'
+  gitHubUser:
+    required: false
+    description: 'Git hub user for creating PR.'
+    default: ''
+  gitHubEmail:
+    required: false
+    description: 'Git hub user email for creating PR.'
+    default: ''
+  gitHubAuth:
+    required: false
+    description: 'GitHub Personal Access Token for creating PR.'
+    default: ''
+  repoOwner:
+    required: false
+    description: 'Repository owner on git hub. https://github.com/[repoOwner]/repositoryName'
+    default: ''    
 runs:
   using: 'node12'
   main: 'dist/index.js'
