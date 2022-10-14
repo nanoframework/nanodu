@@ -23,10 +23,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Set Node.js lts
+      - name: Set Node.js 16
         uses: actions/setup-node@v3
         with:
-          node-version: lts/*
+          node-version: 16 # if possible should use `lts/*`
           cache: 'npm'
 
       - name: Install dependencies
@@ -50,7 +50,7 @@ jobs:
       #   uses: sonarsource/sonarcloud-github-action@master
       #   env:
       #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
-      #     SONAR_TOKEN: ${{ secrets.sonar_token }}
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   test:
     runs-on: ubuntu-latest
