@@ -26,7 +26,7 @@ jobs:
       - name: Set Node.js 16
         uses: actions/setup-node@v3
         with:
-          node-version: 16 # if possible should use `lts/*`
+          node-version: 16.x # if possible should use `lts/*`
           cache: 'npm'
 
       - name: Install dependencies
@@ -44,13 +44,6 @@ jobs:
                   "and check in all changes" \
               && git diff --cached \
               && exit 1)
-
-      # - name: Run Sonar Scan
-      #   continue-on-error: true
-      #   uses: sonarsource/sonarcloud-github-action@master
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
-      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   test:
     runs-on: ubuntu-latest
