@@ -2,8 +2,13 @@ name: Release
 
 on:
   push:
+    branches:
+      - main
+    paths-ignore:
+      - '**.md'
     tags:
       - v*
+  workflow_dispatch:
 
 jobs:
   validate:
@@ -26,4 +31,4 @@ jobs:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
           draft: true
-          prerelease: false
+          prerelease: true
