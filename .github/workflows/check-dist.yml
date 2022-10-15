@@ -60,6 +60,7 @@ jobs:
       with:
         stablePackages: true
         previewPackages: true
+  
     - name: nanodu failing repos and solutions options
       uses: ./
       continue-on-error: true
