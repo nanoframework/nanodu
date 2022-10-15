@@ -32,16 +32,16 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: npm run build
+      - name: Build lib
         run: npm run build
 
-      - name: check for uncommitted changes
-        # Ensure no changes.
+      - name: Check Update compatiility with `dist/index.js`
+        # Ensure no changes with `dist/index.js`.
         run: |
           git add -u . # compare after applying git EOL normalization
           git diff --cached --exit-code --stat \
-          || (echo "##[error] found changed files after build. please 'yarn run build'" \
-                  "and check in all changes" \
+          || (echo "##[error] found changed files after build in CI." \
+                  "Please 'yarn run build' locally and check in all changes" \
               && git diff --cached \
               && exit 1)
 
