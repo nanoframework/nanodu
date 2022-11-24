@@ -23,6 +23,7 @@ This action installs the nanodu dotnet tool and udpates the NuGet packages and r
 `gitHubEmail`||Git hub user email for creating PR.
 `gitHubAuth`||GitHub Personal Access Token for creating PR.
 `repoOwner`||Repository owner on git hub. github.com/**[repoOwner]**/repositoryName
+`useTokenForClone`||Should use token for cloning repositories. Required when working with private repositories.
 
 ## Example usage
 

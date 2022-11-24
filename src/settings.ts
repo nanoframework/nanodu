@@ -53,4 +53,9 @@ export class Inputs {
         const result = core.getInput('gitHubAuth');
         return result === '' || result === null ? undefined : result;
     }
+
+    static get useTokenForClone(): string | undefined {
+        const result = core.getInput('useTokenForClone');
+        return result === '' || result === null ? undefined : result;
+    }
 }
