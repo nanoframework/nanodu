@@ -78,6 +78,9 @@ async function run() {
         if (settings_1.Inputs.gitHubAuth) {
             args.push('--git-hub-auth', settings_1.Inputs.gitHubAuth);
         }
+        if (settings_1.Inputs.useTokenForClone) {
+            args.push('--use-token-for-clone', settings_1.Inputs.useTokenForClone);
+        }
         await (0, exec_1.exec)('nanodu', args);
     }
     catch (error) {
@@ -162,6 +165,10 @@ class Inputs {
     }
     static get gitHubAuth() {
         const result = core.getInput('gitHubAuth');
+        return result === '' || result === null ? undefined : result;
+    }
+    static get useTokenForClone() {
+        const result = core.getInput('useTokenForClone');
         return result === '' || result === null ? undefined : result;
     }
 }
