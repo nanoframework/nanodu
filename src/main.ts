@@ -68,6 +68,10 @@ async function run() {
       args.push('--git-hub-auth', Inputs.gitHubAuth);
     }
 
+    if (Inputs.useTokenForClone) {
+      args.push('--use-token-for-clone', Inputs.useTokenForClone);
+    }
+
     await exec('nanodu', args);
 
   } catch (error) {
