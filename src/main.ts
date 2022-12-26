@@ -68,6 +68,10 @@ async function run() {
       args.push('--git-hub-auth', Inputs.gitHubAuth);
     }
 
+    if (Inputs.nugetConfig) {
+      args.push('--nugetConfig', Inputs.nugetConfig);
+    }
+
     if (Inputs.useTokenForClone) {
       args.push('--use-token-for-clone', Inputs.useTokenForClone);
     }

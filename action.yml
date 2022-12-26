@@ -49,6 +49,10 @@ inputs:
     required: false
     description: 'Repository owner on git hub. https://github.com/[repoOwner]/repositoryName'
     default: ''    
+  nugetConfig:
+    required: false
+    description: 'Path to nuget.config file to use for NuGet operations.'
+    default: ''    
   useTokenForClone:
     required: false
     description: 'Set to true if you trying to update private GitHub repository.'

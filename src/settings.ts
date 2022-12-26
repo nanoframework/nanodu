@@ -54,6 +54,11 @@ export class Inputs {
         return result === '' || result === null ? undefined : result;
     }
 
+    static get nugetConfig(): string | undefined {
+        const result = core.getInput('nugetConfig');
+        return result === '' || result === null ? undefined : result;
+    }
+
     static get useTokenForClone(): string | undefined {
         const result = core.getInput('useTokenForClone');
         return result === '' || result === null ? undefined : result;

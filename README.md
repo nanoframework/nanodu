@@ -22,6 +22,7 @@ This action installs the nanodu dotnet tool and udpates the NuGet packages and r
 `gitHubUser`||Git hub user for creating PR.
 `gitHubEmail`||Git hub user email for creating PR.
 `gitHubAuth`||GitHub Personal Access Token for creating PR.
+`nugetConfig`||Path to nuget.config file to use for NuGet operations.
 `repoOwner`||Repository owner on git hub. github.com/**[repoOwner]**/repositoryName
 `useTokenForClone`||Should use token for cloning repositories. Required when working with private repositories.
 
@@ -48,7 +49,7 @@ Update dependencies of `amqp-nanoFramework.sln` solution using stable NuGet pack
     solutionsToCheck: 'amqp-nanoFramework.sln'
 ```
 
-Update dependencies on several repositories using stable NuGet packages.
+Update dependencies on several repositories using stable NuGet packages and a NuGet.config file.
 
 ```yaml
 - uses: nanoframework/nanodu@v1
@@ -56,6 +57,7 @@ Update dependencies on several repositories using stable NuGet packages.
     GITHUB_TOKEN: ${{ github.token }}
   with:
     stablePackages: true
+    nugetConfig: 'C:\repos\NuGet.config'
     reposToUpdate: >
       System.Net.Http
       System.Net.WebSockets

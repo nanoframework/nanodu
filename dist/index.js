@@ -78,6 +78,9 @@ async function run() {
         if (settings_1.Inputs.gitHubAuth) {
             args.push('--git-hub-auth', settings_1.Inputs.gitHubAuth);
         }
+        if (settings_1.Inputs.nugetConfig) {
+            args.push('--nugetConfig', settings_1.Inputs.nugetConfig);
+        }
         if (settings_1.Inputs.useTokenForClone) {
             args.push('--use-token-for-clone', settings_1.Inputs.useTokenForClone);
         }
@@ -165,6 +168,10 @@ class Inputs {
     }
     static get gitHubAuth() {
         const result = core.getInput('gitHubAuth');
+        return result === '' || result === null ? undefined : result;
+    }
+    static get nugetConfig() {
+        const result = core.getInput('nugetConfig');
         return result === '' || result === null ? undefined : result;
     }
     static get useTokenForClone() {
