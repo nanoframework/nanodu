@@ -69,7 +69,7 @@ async function run() {
     }
 
     if (Inputs.nugetConfig) {
-      args.push('--nugetConfig', Inputs.nugetConfig);
+      args.push('--nuget-config', Inputs.nugetConfig);
     }
 
     if (Inputs.useTokenForClone) {
