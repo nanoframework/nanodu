@@ -11,7 +11,7 @@ async function run() {
     process.env["DOTNET_NOLOGO"] = 'true';
 
     // install nanodu
-    let installArgs = ['tool', 'install', '-g', 'nanodu', '--add-source', 'https://pkgs.dev.azure.com/nanoframework/feed/_packaging/sandbox/nuget/v3/index.json'];
+    let installArgs = ['tool', 'install', '-g', 'nanodu'];
 
     let exitCode = await exec('dotnet', installArgs, { ignoreReturnCode: true });
     if (exitCode > 1) {
