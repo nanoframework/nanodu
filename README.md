@@ -23,7 +23,7 @@ This action installs the nanodu dotnet tool and udpates the NuGet packages and r
 `gitHubAuth`        |                                   |                               |GitHub Personal Access Token for creating PR.
 `nugetConfig`       |                                   |                               |Path to nuget.config file to use for NuGet operations.
 `repoOwner`         |                                   |                               |Repository owner on GitHhub. github.com/**[repoOwner]**/repositoryName.
-`useTokenForClone`  |                                   |                               |Should use token for cloning repositories (required when working with  private repositories).
+`useTokenForClone`  |                                   |                               |Should use token for cloning repositories (required when working with private repositories).
 
 ## Example usage
 
