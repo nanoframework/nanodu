@@ -12,18 +12,18 @@ This action installs the nanodu dotnet tool and udpates the NuGet packages and r
 |Name               |Default                            |Options                        |Description
 |--                 |--                                 |--                             |--|
 `workingDirectory`  |_root_ Repository workspace path   | _optional_ folder path        |Use when targeting Solution file(s) other than in the repository root folder.
-`branchToPr`        |_main_                             |branch                         |Name of branch to which submit the PR with the updates. 
+`branchToPr`        |_main_                             |_branch_                        |Name of branch to which submit the PR with the updates. 
 `stablePackages`    |`true`                             |`true`/`false`                 |Use _true_ for `stable` NuGet package versions.
 `previewPackages`   |`false`                            |`true`/`false`                 |Use _true_ for `preview` NuGet package versions.
 `solutionsToCheck`  |All                                |_optional_ string path(s)      |List of Solution(s) to update in the current `workingDirectory`.
 `reposToUpdate`     |None                               |_optional_ repository names    |List of (dependent upstream) repository(es) to update. [internal use only].
 `exclusionList`     |None                               |_optional_ solution list       |List of solution(s) to exclude from update. Comma separated list.
-`gitHubUser`        |                                   |                               |Git hub user for creating PR.
-`gitHubEmail`       |                                   |                               |Git hub user email for creating PR.
+`gitHubUser`        |                                   |                               |GitHub user for creating PR.
+`gitHubEmail`       |                                   |                               |GitHub user email for creating PR.
 `gitHubAuth`        |                                   |                               |GitHub Personal Access Token for creating PR.
 `nugetConfig`       |                                   |                               |Path to nuget.config file to use for NuGet operations.
-`repoOwner`         |                                   |                               |Repository owner on git hub. github.com/**[repoOwner]**/repositoryName
-`useTokenForClone`  |                                   |                               |Should use token for cloning repositories. Required when working with private repositories.
+`repoOwner`         |                                   |                               |Repository owner on GitHhub. github.com/**[repoOwner]**/repositoryName.
+`useTokenForClone`  |                                   |                               |Should use token for cloning repositories (required when working with  private repositories).
 
 ## Example usage
 
