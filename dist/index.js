@@ -38,7 +38,7 @@ const settings_1 = __nccwpck_require__(286);
 async function run() {
     try {
         process.env["DOTNET_NOLOGO"] = 'true';
-        let installArgs = ['tool', 'install', '-g', 'nanodu', '--add-source', 'https://pkgs.dev.azure.com/nanoframework/feed/_packaging/sandbox/nuget/v3/index.json'];
+        let installArgs = ['tool', 'install', '-g', 'nanodu'];
         let exitCode = await (0, exec_1.exec)('dotnet', installArgs, { ignoreReturnCode: true });
         if (exitCode > 1) {
             throw new Error("failed to install nanodu.");
