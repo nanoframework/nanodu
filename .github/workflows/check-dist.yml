@@ -15,7 +15,7 @@ on:
     paths-ignore:
       - '**.md'
   workflow_dispatch:
-  paths-ignore:
+    paths-ignore:
       - '**.md'
 
 jobs:
