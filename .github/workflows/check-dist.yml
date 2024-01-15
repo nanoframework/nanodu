@@ -15,20 +15,18 @@ on:
     paths-ignore:
       - '**.md'
   workflow_dispatch:
-    paths-ignore:
-      - '**.md'
 
 jobs:
   check-dist:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - name: Set Node.js 16.x
-        uses: actions/setup-node@v3
+      - name: Set Node.js version lts/*
+        uses: actions/setup-node@v4
         with:
-          node-version: 16.x # if possible should use `lts/*`
+          node-version: lts/*
           cache: 'npm'
 
       - name: Install dependencies
@@ -52,7 +50,7 @@ jobs:
     needs: check-dist
     steps:
 
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       with:
         ref: 'main' 
 
