@@ -58,5 +58,5 @@ inputs:
     description: 'Set to true if you trying to update private GitHub repository.'
     default: ''    
 runs:
-  using: 'node16'
+  using: 'node20'
   main: 'dist/index.js'
