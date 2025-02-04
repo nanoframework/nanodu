@@ -78,18 +78,18 @@ runs:
         $previewPackages = "${{ inputs.previewPackages }}"
 
         # output all parameters for debug
-        Write-Host "workingDirectory: $workingDirectory"
-        Write-Host "stablePackages: $stablePackages"
-        Write-Host "previewPackages: $previewPackages"
-        Write-Host "solutionsToCheck: $solutionsToCheck"
-        Write-Host "reposToUpdate: $reposToUpdate"
-        Write-Host "exclusionList: $exclusionList"
-        Write-Host "gitHubUser: $gitHubUser"
-        Write-Host "gitHubEmail: $gitHubEmail"
-        Write-Host "gitHubAuth: $gitHubAuth"
-        Write-Host "repoOwner: $repoOwner"
-        Write-Host "branchToPr: $branchToPr"
-        Write-Host "nugetConfig: $nugetConfig"
+        # Write-Host "workingDirectory: $workingDirectory"
+        # Write-Host "stablePackages: $stablePackages"
+        # Write-Host "previewPackages: $previewPackages"
+        # Write-Host "solutionsToCheck: $solutionsToCheck"
+        # Write-Host "reposToUpdate: $reposToUpdate"
+        # Write-Host "exclusionList: $exclusionList"
+        # Write-Host "gitHubUser: $gitHubUser"
+        # Write-Host "gitHubEmail: $gitHubEmail"
+        # Write-Host "gitHubAuth: $gitHubAuth"
+        # Write-Host "repoOwner: $repoOwner"
+        # Write-Host "branchToPr: $branchToPr"
+        # Write-Host "nugetConfig: $nugetConfig"
         
         # skip first experience prompt
         $env:DOTNET_NOLOGO = 'true';
@@ -97,7 +97,7 @@ runs:
         # install nanodu
         dotnet tool install --global nanodu
 
-        Write-Host "installing nanodu tool..."
+        # Write-Host "installing nanodu tool..."
 
         # build argument list
         $nanoduArgs = @()
