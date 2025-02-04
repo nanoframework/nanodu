@@ -6,7 +6,7 @@
 
 ## GitHub Action for .NET **nanoFramework** dependencies updater
 
-This action installs the nanodu dotnet tool and udpates the NuGet packages and respective nuspec files in any .NET nanoFramework solutions living in a GitHub repository.
+This action installs the nanodu .NET tool and udpates the NuGet packages and respective nuspec files in any .NET nanoFramework solutions living in a GitHub repository.
 
 ### Inputs
 |Name               |Default                            |Options                        |Description|
@@ -104,6 +104,6 @@ The **nanoFramework** Class Libraries are licensed under the [MIT license](LICEN
 This project has adopted the code of conduct defined by the Contributor Covenant to clarify expected behaviour in our community.
 For more information see the [.NET Foundation Code of Conduct](https://dotnetfoundation.org/code-of-conduct).
 
-### .NET Foundation
+## .NET Foundation
 
 This project is supported by the [.NET Foundation](https://dotnetfoundation.org).

@@ -1,62 +1,172 @@
-name: '.NET nanoFramework dependencies updater'
-description: 'Updates .NET nanoFramework NuGet packages and nuspec files on .NET nanoFramework solutions'
-author: '.NET nanoFramework Contributors'
+name: ".NET nanoFramework dependencies updater"
+description: "Updates .NET nanoFramework NuGet packages and nuspec files on .NET nanoFramework solutions"
+author: ".NET nanoFramework Contributors"
 branding:
   icon: git-merge
   color: purple
 inputs:
   workingDirectory:
     required: false
-    description: 'Repo root|Working directory. Use when targeting Solution file(s) other than the repository root.'
-    default: '${{ github.workspace }}'
+    description: "Repo root|Working directory. Use when targeting Solution file(s) other than the repository root."
+    default: "${{ github.workspace }}"
   stablePackages:
     required: false
-    description: 'Use stable NuGet package versions.'
-    default: 'true'
+    description: "Use stable NuGet package versions."
+    default: "true"
   previewPackages:
     required: false
-    description: 'Use preview NuGet package versions.'
-    default: 'false'
+    description: "Use preview NuGet package versions."
+    default: "false"
   solutionsToCheck:
     required: false
-    description: 'List of Solution(s) to update in the `workingDirectory` directory.'
-    default: ''
+    description: "List of Solution(s) to update in the `workingDirectory` directory."
+    default: ""
   reposToUpdate:
     required: false
-    description: 'List of repository(es) to update.'
-    default: ''
+    description: "List of repository(es) to update."
+    default: ""
   exclusionList:
     required: false
-    description: 'List of solution names to exclude from the update. Comma separated, name only.'
-    default: ''
+    description: "List of solution names to exclude from the update. Comma separated, name only."
+    default: ""
   branchToPr:
     required: false
-    description: 'Branch name to submit PR with update. Default is `main`.'
-    default: 'main'
+    description: "Branch name to submit PR with update. Default is `main`."
+    default: "main"
   gitHubUser:
     required: false
-    description: 'Git hub user for creating PR.'
-    default: ''
+    description: "Git hub user for creating PR."
+    default: ""
   gitHubEmail:
     required: false
-    description: 'Git hub user email for creating PR.'
-    default: ''
+    description: "Git hub user email for creating PR."
+    default: ""
   gitHubAuth:
     required: false
-    description: 'GitHub Personal Access Token for creating PR.'
-    default: ''
+    description: "GitHub Personal Access Token for creating PR."
+    default: ""
   repoOwner:
     required: false
-    description: 'Repository owner on git hub. https://github.com/[repoOwner]/repositoryName'
-    default: ''    
+    description: "Repository owner on git hub. https://github.com/[repoOwner]/repositoryName"
+    default: ""
   nugetConfig:
     required: false
-    description: 'Path to nuget.config file to use for NuGet operations.'
-    default: ''    
+    description: "Path to nuget.config file to use for NuGet operations."
+    default: ""
   useTokenForClone:
     required: false
-    description: 'Set to true if you trying to update private GitHub repository.'
-    default: ''    
+    description: "Set to true if you trying to update private GitHub repository."
+    default: "false"
+
 runs:
-  using: 'node20'
-  main: 'dist/index.js'
+  using: "composite"
+  steps:
+    - run: |
+    
+        $workingDirectory = "${{ inputs.workingDirectory }}"
+        $solutionsToCheck = "${{ inputs.solutionsToCheck }}"
+        $reposToUpdate = "${{ inputs.reposToUpdate }}"
+        $exclusionList = "${{ inputs.exclusionList }}"
+        $gitHubUser = "${{ inputs.gitHubUser }}"
+        $gitHubEmail = "${{ inputs.gitHubEmail }}"
+        $gitHubAuth = "${{ inputs.gitHubAuth }}"
+        $branchToPr = "${{ inputs.branchToPr }}"
+        $repoOwner = "${{ inputs.repoOwner }}"
+        $nugetConfig = "${{ inputs.nugetConfig }}"
+        $useTokenForClone = "${{ inputs.useTokenForClone }}"
+        $stablePackages = "${{ inputs.stablePackages }}"
+        $previewPackages = "${{ inputs.previewPackages }}"
+
+        # output all parameters for debug
+        Write-Host "workingDirectory: $workingDirectory"
+        Write-Host "stablePackages: $stablePackages"
+        Write-Host "previewPackages: $previewPackages"
+        Write-Host "solutionsToCheck: $solutionsToCheck"
+        Write-Host "reposToUpdate: $reposToUpdate"
+        Write-Host "exclusionList: $exclusionList"
+        Write-Host "gitHubUser: $gitHubUser"
+        Write-Host "gitHubEmail: $gitHubEmail"
+        Write-Host "gitHubAuth: $gitHubAuth"
+        Write-Host "repoOwner: $repoOwner"
+        Write-Host "branchToPr: $branchToPr"
+        Write-Host "nugetConfig: $nugetConfig"
+        
+        # skip first experience prompt
+        $env:DOTNET_NOLOGO = 'true';
+
+        # install nanodu
+        dotnet tool install --global nanodu
+
+        Write-Host "installing nanodu tool..."
+
+        # build argument list
+        $nanoduArgs = @()
+
+        if (-not [string]::IsNullOrEmpty($workingDirectory)) {
+            $nanoduArgs += "--working-directory"
+            $nanoduArgs += $workingDirectory
+        }
+
+        if ($stablePackages -eq "true") {
+            $nanoduArgs += "--stable-packages"
+        }
+
+        if ($previewPackages -eq "true") {
+            $nanoduArgs += "--preview-packages"
+        }
+
+        if (-not [string]::IsNullOrEmpty($exclusionList)) {
+            $nanoduArgs += "--exclusion-list"
+            $nanoduArgs += $exclusionList
+        }
+
+        if (-not [string]::IsNullOrEmpty($gitHubUser)) {
+            $nanoduArgs += "--git-hub-user"
+            $nanoduArgs += $gitHubUser
+        }
+
+        if (-not [string]::IsNullOrEmpty($gitHubEmail)) {
+            $nanoduArgs += "--git-hub-email"
+            $nanoduArgs += $gitHubEmail
+        }
+
+        if (-not [string]::IsNullOrEmpty($gitHubAuth)) {
+            $nanoduArgs += "--git-hub-auth"
+            $nanoduArgs += $gitHubAuth
+        }
+
+        if (-not [string]::IsNullOrEmpty($repoOwner)) {
+            $nanoduArgs += "--repo-owner"
+            $nanoduArgs += $repoOwner
+        }
+
+        if (-not [string]::IsNullOrEmpty($nugetConfig)) {
+            $nanoduArgs += "--nuget-config"
+            $nanoduArgs += $nugetConfig
+        }
+
+        if (-not [string]::IsNullOrEmpty($branchToPr)) {
+            $nanoduArgs += "--branch-to-pr"
+            $nanoduArgs += $branchToPr
+        }
+
+        if ($useTokenForClone -eq "true") {
+            $nanoduArgs += "--use-token-for-clone"
+        }
+
+        if (-not [string]::IsNullOrEmpty($solutionsToCheck)) {
+            $nanoduArgs += "--solutions-to-check"
+            $nanoduArgs += $solutionsToCheck
+        }
+
+        if (-not [string]::IsNullOrEmpty($reposToUpdate)) {
+            $nanoduArgs += "--repos-to-update"
+            $nanoduArgs += $reposToUpdate
+        }
+
+        # run nanodu
+        Write-Host "Running nanodu with arguments: $nanoduArgs"
+
+        nanodu @nanoduArgs
+
+      shell: pwsh
